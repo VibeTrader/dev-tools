@@ -69,7 +69,7 @@ export default function Home() {
         if (headers.length > 0) {
           initialColumns[tableName] = new Set(headers);
           initialFilters[tableName] = {};
-          headers.forEach((header) => {
+          headers.forEach((header: string) => {
             initialFilters[tableName][header] = '';
           });
         }
@@ -243,7 +243,7 @@ export default function Home() {
         if (headers.length > 0) {
           initialColumns[tableName] = new Set(headers);
           initialFilters[tableName] = {};
-          headers.forEach((header) => {
+          headers.forEach((header: string) => {
             initialFilters[tableName][header] = '';
           });
         }
