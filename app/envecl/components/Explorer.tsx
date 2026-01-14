@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ChevronRight, ChevronDown, Folder, Server, RefreshCw, Trash2 } from "lucide-react";
+import { ChevronRight, ChevronDown, Folder, Server, RefreshCw } from "lucide-react";
 import { fetchBrowse } from "./ApiClient";
 
 
