@@ -13,9 +13,6 @@ export function middleware(request: NextRequest) {
 
   const isExplicitProxy = pathname.startsWith('/grafana-proxy');
   const isGrafanaAsset = pathname.startsWith('/public') || pathname.startsWith('/avatar');
-  const isGrafanaDashboard = pathname.startsWith('/d/');
-  // Proxy ALL /api requests to Grafana, EXCEPT for our local Next.js API routes
-  // This ensures we catch all Grafana APIs (alerts, rules, datasources, etc.) automatically
   const isLocalApi = pathname.startsWith('/api/clerk-search') ||
                      pathname.startsWith('/api/delete') ||
                      pathname.startsWith('/api/grafana') ||
@@ -24,7 +21,7 @@ export function middleware(request: NextRequest) {
 
   const isGrafanaApi = pathname.startsWith('/api/') && !isLocalApi;
 
-  if (isExplicitProxy || isGrafanaAsset || isGrafanaApi || isGrafanaDashboard) {
+  if (isExplicitProxy || isGrafanaAsset || isGrafanaApi) {
     const grafanaUrl = process.env.NEXT_PUBLIC_GRAFANA_URL;
     const apiToken = process.env.GRAFANA_API_TOKEN;
 
@@ -74,6 +71,5 @@ export const config = {
     '/public/:path*',
     '/avatar/:path*',
     '/api/:path*',
-    '/d/:path*',
   ],
 };
